@@ -27,25 +27,25 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    class Comments(models.Model):
+class Comment(models.Model):
 
-        # each post has its comments
-        post             = models.ForeignKey('blog_app.Post',
-                                related_name = 'comments',
-                                on_delete=models.CASCADE)
-        author           = models.CharField(max_length = 200)
-        text             = models.TextField()
-        create_date      = models.DateTimeField(default = timezone.now())
-        approved_comment = models.BooleanField(default = False)
+    # each post has its comments
+    post             = models.ForeignKey('blog_app.Post',
+                            related_name = 'comments',
+                            on_delete=models.CASCADE)
+    author           = models.CharField(max_length = 200)
+    text             = models.TextField()
+    create_date      = models.DateTimeField(default = timezone.now())
+    approved_comment = models.BooleanField(default = False)
 
-        # set comment to approved
-        def approve(self):
-            self.approved_comment = True
-            self.save()
+    # set comment to approved
+    def approve(self):
+        self.approved_comment = True
+        self.save()
 
-        def get_absolute_url(self):
-            return reverse("post_list")
+    def get_absolute_url(self):
+        return reverse("post_list")
 
-        # define text to be returned by __str__ method
-        def __str__(self):
-            return self.text
+    # define text to be returned by __str__ method
+    def __str__(self):
+        return self.text
