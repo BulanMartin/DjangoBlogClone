@@ -27,6 +27,26 @@ h1{
   color:linear-gradient(45deg,#0f8,#08f);
   animation:hue 10000ms infinite linear;
 
+.postdate{
+  text-align: center;
+}
+
+.posttitle{
+  font-family: 'Russo one', sans-serif;
+  font-size: 3em;
+  text-align: center;
+}
+
+.postcontent{
+  font-family: 'Montserrat';
+  font-size: 1.5em;
+}
+
+.btn-comment{
+  position: absolute;
+  right: 0px;
+}
+
 @keyframes spinify {
   0% {
     transform: translate(0px,0px);
