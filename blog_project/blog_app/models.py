@@ -6,7 +6,7 @@ class Post(models.Model):
     author      = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title       = models.CharField(max_length = 200)
     text        = models.TextField()
-    create_date = models.DateTimeField(default = timezone.now())
+    create_date = models.DateTimeField(default = timezone.now)
 
     # editable (to be defined after the post is published)
     published_date = models.DateTimeField(blank = True, null = True)
@@ -35,7 +35,7 @@ class Comment(models.Model):
                             on_delete=models.CASCADE)
     author           = models.CharField(max_length = 200)
     text             = models.TextField()
-    create_date      = models.DateTimeField(default = timezone.now())
+    create_date      = models.DateTimeField(default = timezone.now)
     approved_comment = models.BooleanField(default = False)
 
     # set comment to approved

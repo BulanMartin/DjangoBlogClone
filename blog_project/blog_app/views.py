@@ -10,7 +10,7 @@ from blog_app.models import Post, Comment
 
 
 class AboutView(TemplateView):
-    teplate_name = 'about.html'
+    template_name = 'about.html'
 
 class PostListView(ListView):
     model = Post
@@ -55,7 +55,7 @@ class DraftListView(LoginRequiredMixin, ListView):
 
     # Get posts in descending order
     def get_queryset(self):
-        return Post.objects.filter(published_date__isnull = True).order_by('created_date')
+        return Post.objects.filter(published_date__isnull = True).order_by('create_date')
 
 ##################################################################
 
@@ -63,7 +63,7 @@ class DraftListView(LoginRequiredMixin, ListView):
 @login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk = pk)
-    post.publish
+    post.publish()
     return redirect('post_detail', pk = pk)
 
 # add unapproved comment, return to corresponding post detail page
@@ -82,7 +82,7 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
 
-    return render(request, 'blog/comment_form.html', {'form':form})
+    return render(request, 'blog_app/comment_form.html', {'form':form})
 
 # approve unapproved comment, return to corresponding post detail page
 @login_required
