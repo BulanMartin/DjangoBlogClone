@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
 h1{
   font-family: Oak,sans-serif;
   color: rgba(0,0,0,0.7);
@@ -6,13 +8,21 @@ h1{
   left:calc(50% - 130px);
 }
 
+.navbar-custom {
+    background-color: #C4FBC6;
+}
+
+.navbar-brand{
+  font-size: 1.8em;
+}
+
 .centerstage{
   margin-left: auto;
   margin-right: auto;
 }
 
 .techfont{
-  font-family: 'Russo one', sans-serif;
+  font-family: 'Black And White Picture', sans-serif;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
@@ -26,6 +36,7 @@ h1{
   filter:hue-rotate(0deg);
   color:linear-gradient(45deg,#0f8,#08f);
   animation:hue 10000ms infinite linear;
+}
 
 .postdate{
   text-align: center;
@@ -45,6 +56,10 @@ h1{
 .btn-comment{
   position: absolute;
   right: 0px;
+}
+
+.active{
+  font-weight: bold;
 }
 
 @keyframes spinify {
