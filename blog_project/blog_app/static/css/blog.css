@@ -8,12 +8,20 @@ h1{
   left:calc(50% - 130px);
 }
 
+.medium-editor-textarea {
+    min-height: 150px;
+}
+
 .navbar-custom {
     background-color: #C4FBC6;
 }
 
 .navbar-brand{
   font-size: 1.8em;
+}
+
+.content{
+  margin-top: 50px;
 }
 
 .centerstage{

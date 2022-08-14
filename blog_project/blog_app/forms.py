@@ -11,8 +11,9 @@ class PostForm(forms.ModelForm):
 
         # add styling to the form items
         widgets = {
-            'title':forms.TextInput(attrs = {'class':'textinputclass'}),
-            'text':forms.Textarea(attrs = {'class':'editable medium-editor-textarea postcontent'}),
+            'title':forms.TextInput(attrs = {'class':'form-control'}),
+            'author':forms.Select(attrs = {'class':'form-select form-select-lg mb-3'}),
+            'text':forms.Textarea(attrs = {'class':'form-control','rows':'3'}),
         }
 
 # Form for Comment class
