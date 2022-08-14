@@ -1,29 +1,56 @@
 {% extends "blog_app/base.html" %}
 {% block content %}
-
-  <h1 class="posttitle loader">{{post.title}}</h1>
-  {% if post.published_date %}
-    <div class="date postdate">
-      Published on: {{post.published_date|date:"D M Y"}}
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <h1>{{post.title}}</h1>
     </div>
-  {% else %}
-    <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-  {% endif %}
-
-  <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
-
+  </div>
+  <div class="row align-items-center">
+    {% if post.published_date %}
+      <div class="col-md-2 pt-3">
+        Published on: {{post.published_date|date:"D M Y"}}
+      </div>
+    {% else %}
+      <div class="col-md-2 pt-3">
+        <p>Created on: {{post.create_date|date:"D M Y"}}</p>
+      </div>
+      <div class="col">
+        <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+      </div>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>{{ post.text|safe|linebreaksbr }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr>
+    </div>
+  </div>
   {% if user.is_authenticated %}
-  <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}">
-    <span class="glyphicon glyphicon-pencil"></span>
-  </a>
-  <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}">
-    <span class="glyphicon glyphicon-remove"></span>
-  </a>
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+      <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}">
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+    </div>
+  </div>
   {% endif %}
 
   <hr>
   <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-
+</div>
   <div class="container">
     {% for comment in post.comments.all %}
       <br>
