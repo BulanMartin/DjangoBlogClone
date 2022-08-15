@@ -8,11 +8,11 @@
   </div>
   <div class="row align-items-center">
     {% if post.published_date %}
-      <div class="col-md-2 pt-3">
+      <div class="col-md-3 pt-3">
         Published on: {{post.published_date|date:"D M Y"}}
       </div>
     {% else %}
-      <div class="col-md-2 pt-3">
+      <div class="col-md-3 pt-3">
         <p>Created on: {{post.create_date|date:"D M Y"}}</p>
       </div>
       <div class="col">
