@@ -46,22 +46,22 @@
           </ul>
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'post_new' %}active{% endif %}" aria-current="page" href="{% url 'post_new' %}">New Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'post_draft_list' %}active{% endif %}" href="{% url 'post_draft_list' %}">Drafts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Log Out</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">Welcome: {{user.username}}</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'post_new' %}active{% endif %}" aria-current="page" href="{% url 'post_new' %}">New Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'post_draft_list' %}active{% endif %}" href="{% url 'post_draft_list' %}">Drafts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Log Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Welcome: {{user.username}}</a>
+              </li>
             {% else %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a>
+              </li>
             {% endif %}
           </ul>
         </div>
