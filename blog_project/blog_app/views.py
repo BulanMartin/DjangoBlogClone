@@ -5,8 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.utils import timezone
-from blog_app.forms import PostForm, CommentForm
+from blog_app.forms import PostForm, CommentForm, PrettyAuthenticationForm
 from blog_app.models import Post, Comment
+from django.contrib.auth.views import LoginView
 
 
 class AboutView(TemplateView):
@@ -57,7 +58,13 @@ class DraftListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull = True).order_by('create_date')
 
-##################################################################
+class CustomLoginView(LoginView):
+
+    #template_name = 'blog_app/about.html'
+    authentication_form = PrettyAuthenticationForm
+    print('abcd')
+
+###################################################################
 
 # publish new post
 @login_required

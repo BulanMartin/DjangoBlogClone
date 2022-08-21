@@ -1,22 +1,50 @@
 {% extends 'blog_app/base.html' %}
 {% block content %}
-<div class="col-md-6">
-  <div class="h-100 p-5 bg-light border rounded-3">
-    <h2>Please Login:</h2>
-    <h3>(Must be SuperUser, please check with the site admin)</h3>
-    {% if form.errors %}
-      <p>Your username and password didn't match. Please try again!</p>
-    {% endif %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="h-100 p-3 bg-light border rounded-3">
+      <div class="row">
+        <div class="col">
+          <h2>Please Login:</h2>
+          <p>(Must be SuperUser, please check with the site admin)</p>
+        </div>
+      </div>
 
-    <form action="{% url 'login' %}" method="post">
-      {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-outline-secondary" type="submit">Fuck off</button>
-    </form>
+        {% if form.errors %}
+          <p>Your username and password didn't match. Please try again!</p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+            <div class="row">
+              <div class="col-md-2">
+                <label for="id_subject">User:</label>
+              </div>
+              <div class="col">
+                {{ form.subject.errors }}
+                {{ form.username }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <label for="id_subject">Password:</label>
+              </div>
+              <div class="col">
+                {{ form.subject.errors }}
+                {{ form.password }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="hidden" name="next" value="{{next}}">
+                <button class="btn btn-outline-secondary" type="submit">Login</button>
+              </div>
+            </div>
+        </form>
 
 
-    <input class="btn btn-outline-secondary" type="button" value="Login">
-    <input type="hidden" name="next" value="{{next}}">
+    </div>
   </div>
 </div>
 {% endblock %}

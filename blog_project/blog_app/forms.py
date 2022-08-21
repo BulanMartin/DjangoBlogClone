@@ -1,5 +1,6 @@
 from django import forms
 from blog_app.models import Post, Comment
+from django.contrib.auth.forms import AuthenticationForm
 
 # Form for Post class
 class PostForm(forms.ModelForm):
@@ -29,3 +30,18 @@ class CommentForm(forms.ModelForm):
             'author':forms.TextInput(attrs = {'class':'textinputclass'}),
             'text':forms.Textarea(attrs = {'class':'editable medium-editor-textarea'})
         }
+
+# Add css class to authentication form
+class PrettyAuthenticationForm(AuthenticationForm):
+
+    username = forms.CharField(
+        max_length=254,
+        widget=forms.TextInput(attrs={
+            'class': 'input100',
+        })
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+        })
+    )
