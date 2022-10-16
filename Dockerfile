@@ -7,9 +7,11 @@ ENV PYTHONUNBUFFERED 1
 
 RUN pip install --upgrade pip
 
-COPY ./blog_project /app
+COPY ./blog_project/requirements.txt /app
 
 RUN pip install -v -r requirements.txt
+
+COPY ./blog_project /app
 
 EXPOSE 8000
 

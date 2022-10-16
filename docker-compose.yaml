@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  blog:
+    build: ./app
+    ports:
+      - 8000:8000
+    volumes:
+      - sqlite:/db.sqlite3
+      - ./blog_project/blog_app:/app/blog_app
+      - ./blog_project/blog_project:/app/blog_project
+
+volumes:
+  sqlite:
